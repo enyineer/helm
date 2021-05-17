@@ -12,4 +12,4 @@ Needs:
 
 * Traefik for [IngressRouteUDP](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#kind-ingressrouteudp)
 
-..* Traefik must have a dedicated entrypoint for every MC server (best is 25565 as default port) 
+  * Traefik must have a dedicated entrypoint for every MC server (best is 25565 as default port) 
