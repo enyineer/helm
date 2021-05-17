@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: gabibbo97/papermc
-  tag: 1.15.2
+  repository: marctv/minecraft-papermc-server
+  tag: 1.16
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -23,7 +23,11 @@ serviceAccount:
 service:
   type: ClusterIP
   port: 25565
-  nodePort: 30565 # This will only work if type is "NodePort"
+  nodePort: 1234 # This will only work if type is "NodePort"
+
+ingress:
+  entrypoints:
+    tcp: mc1-tcp
 
 resources:
   #
@@ -56,7 +60,7 @@ persistence:
   # Create a PVC
   storageClassName: ""
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 6Gi
 
   # Subpath inside of the volume
   subPath: ""
