@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: 1.16.0
+appVersion: 1.16.5
 description: Helm Chart for deploying PaperMC to self hosted kubernetes servers
 name: papermc
 type: application
-version: 1.0.2
+version: 1.0.3
