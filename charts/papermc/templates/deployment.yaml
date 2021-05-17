@@ -85,14 +85,14 @@ spec:
               containerPort: 25565
               protocol: TCP
           livenessProbe:
-            tcpSocket:
-              port: {{ .Values.service.port }}
-            periodSeconds: 10
+            exec:
+              command:
+                - /paper/healthcheck.sh
             initialDelaySeconds: {{ .Values.probesTimeout }}
           readinessProbe:
-            tcpSocket:
-              port: {{ .Values.service.port }}
-            periodSeconds: 10
+            exec:
+              command:
+                - /paper/healthcheck.sh
             initialDelaySeconds: {{ .Values.probesTimeout }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
