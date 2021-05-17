@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: 1.15.2
-description: Deploy the PaperMC Minecraft server
+appVersion: 1.16.0
+description: Helm Chart for deploying PaperMC to self hosted kubernetes servers
 name: papermc
 type: application
-version: 0.1.11
+version: 1.0.0
