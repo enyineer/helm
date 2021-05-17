@@ -3,7 +3,7 @@ kind: IngressRouteTCP
 metadata:
   name: {{ include "papermc.fullname" . }}
   labels:
-    {{ - include "papermc.labels" . | nindent 4 }}
+    {{ include "papermc.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - {{ .Values.ingress.entrypoints.tcp | quote }}
