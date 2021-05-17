@@ -71,12 +71,12 @@ spec:
                 {{- range $i, $opt := .Values.extraJAVAopts }}
                 {{ $opt }}
                 {{- end }}
-          workingDir: /var/lib/papermc
+          workingDir: /paper
           volumeMounts:
             - name: paper-config
               mountPath: /etc/papermc
             - name: paper-data
-              mountPath: /var/lib/papermc
+              mountPath: /paper
               {{- if .Values.persistence.subPath }}
               subPath: {{ .Values.persistence.subPath }}
               {{- end }}
