@@ -13,10 +13,10 @@ Originally created by [gabibbo97](https://github.com/gabibbo97)
   * Traefik must have a dedicated entrypoint for every MC server and TCP protocols (TCP; best is 25565 as default port)
 
   Traefik config:
-  
+
   ```
   ports:
-    mc-tcp:
+    mc1-tcp:
       expose: true
       exposedPort: 25565
       port: 25565
