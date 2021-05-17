@@ -2,11 +2,9 @@
 
 ## Paper-MC
 
-[papermc](https://github.com/SirNiggo/helm/tree/main/charts/papermc)
+Chart: [papermc](https://github.com/SirNiggo/helm/tree/main/charts/papermc)
 
 Originally created by [gabibbo97](https://github.com/gabibbo97)
-
-Needs:
 
 ### Requirements
 
