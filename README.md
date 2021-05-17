@@ -22,3 +22,5 @@ Originally created by [gabibbo97](https://github.com/gabibbo97)
       port: 25565
       protocol: TCP
   ```
+
+  Image can be found at https://github.com/SirNiggo/papermc and https://hub.docker.com/r/nicoenking/papermc
