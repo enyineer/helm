@@ -57,9 +57,9 @@ spec:
             - name: BASE_CONFIG_DIR
               value: /etc/papermc
             - name: SERVER_PORT
-              value: {{ .Values.service.port }}
+              value: {{ .Values.service.port | quote }}
             - name: ONLINE_MODE
-              value: {{ .Values.onlineMode }}
+              value: {{ .Values.onlineMode | quote }}
             - name: JAVA_OPTS
               value: >-
                 -XX:+UnlockExperimentalVMOptions
