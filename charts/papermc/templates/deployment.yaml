@@ -84,12 +84,12 @@ spec:
           livenessProbe:
             exec:
               command:
-                - /paper/healthcheck.sh
+                - /healthcheck
             initialDelaySeconds: {{ .Values.probesTimeout }}
           readinessProbe:
             exec:
               command:
-                - /paper/healthcheck.sh
+                - /healthcheck
             initialDelaySeconds: {{ .Values.probesTimeout }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
