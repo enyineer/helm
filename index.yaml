@@ -1,5 +1,31 @@
 apiVersion: v1
 entries:
+  benisbot:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-05-18T12:29:56.404886824Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.13
+    description: A Helm chart for Kubernetes
+    digest: a1d45637c6257b1d436a7bb7f0e64119021e2a9bf1ad4c40fbcdef379e715be1
+    name: benisbot
+    type: application
+    urls:
+    - https://github.com/SirNiggo/helm/releases/download/benisbot-1.0.0/benisbot-1.0.0.tgz
+    version: 1.0.0
+  benisbot-frontend:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-05-18T12:29:56.501016879Z"
+    description: A Helm chart for Kubernetes
+    digest: 90da38364c5f06ebed6afdf6b6742d02dacdc8c1be302d2ea920d3c58e155585
+    name: benisbot-frontend
+    type: application
+    urls:
+    - https://github.com/SirNiggo/helm/releases/download/benisbot-frontend-1.0.0/benisbot-frontend-1.0.0.tgz
+    version: 1.0.0
   papermc:
   - apiVersion: v2
     appVersion: 1.16.5
@@ -21,4 +47,4 @@ entries:
     urls:
     - https://github.com/SirNiggo/helm/releases/download/papermc-1.0.8/papermc-1.0.8.tgz
     version: 1.0.8
-generated: "2021-05-18T07:37:53.483006896Z"
+generated: "2021-05-18T12:29:56.501026879Z"
