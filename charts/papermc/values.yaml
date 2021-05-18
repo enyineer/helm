@@ -87,7 +87,7 @@ configs:
     difficulty: hard
     gamemode: survival
     generate-structures: true
-    motd: 'A Kubernetes powered Minecraft server'
+    motd: 'Kubernetes PaperMC SirNiggo/helm @ GitHub'
     pvp: true
     view-distance: 16
     white-list: false
