@@ -45,13 +45,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:
-            - --nogui
-            - --online-mode={{ if .Values.onlineMode }}true{{ else }}false{{ end }}
-            - --server-port=25565
-            {{- range $k, $v := .Values.extraArgs }}
-            - --{{ $k }}={{ $v }}
-            {{- end }}
           env:
             {{- if .Values.acceptEULA }}
             - name: ACCEPT_EULA
@@ -63,6 +56,10 @@ spec:
             {{- end }}
             - name: BASE_CONFIG_DIR
               value: /etc/papermc
+            - name: SERVER_PORT
+              value: {{ .Values.service.port }}
+            - name: ONLINE_MODE
+              value: {{ .Values.onlineMode }}
             - name: JAVA_OPTS
               value: >-
                 -XX:+UnlockExperimentalVMOptions

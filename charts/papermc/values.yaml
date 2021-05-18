@@ -72,10 +72,6 @@ persistence:
 # Do you accept Minecraft EULA?
 acceptEULA: false
 
-# Extra args to paper
-extraArgs:
-  max-players: 50
-
 # Extra JAVA opts
 extraJAVAopts: []
 
