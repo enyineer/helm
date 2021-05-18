@@ -16,7 +16,7 @@ backend:
   url: http://localhost:3000
 
 imagePullSecrets:
-  - name: harbor
+  - name: dockerhub
 nameOverride: ""
 fullnameOverride: ""
 

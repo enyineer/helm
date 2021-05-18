@@ -23,7 +23,7 @@ image:
 recreateDeploymentPods: false
 
 imagePullSecrets:
-  - name: harbor
+  - name: dockerhub
 nameOverride: ""
 fullnameOverride: ""
 
