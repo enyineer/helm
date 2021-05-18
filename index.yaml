@@ -53,6 +53,16 @@ entries:
   papermc:
   - apiVersion: v2
     appVersion: 1.16.5
+    created: "2021-05-18T14:25:43.961361686Z"
+    description: Helm Chart for deploying PaperMC to self hosted kubernetes servers
+    digest: 9d8ae424becfee4a3c8ead91dbc5a3e639d01d507d1aca70d3c1a59d2abf8938
+    name: papermc
+    type: application
+    urls:
+    - https://github.com/SirNiggo/helm/releases/download/papermc-1.0.10/papermc-1.0.10.tgz
+    version: 1.0.10
+  - apiVersion: v2
+    appVersion: 1.16.5
     created: "2021-05-18T07:37:53.482582693Z"
     description: Helm Chart for deploying PaperMC to self hosted kubernetes servers
     digest: 54b1eca7e739c980e0770ed8de0a5884bb36796e0cd2854a03aa1635a7967bb5
@@ -71,4 +81,4 @@ entries:
     urls:
     - https://github.com/SirNiggo/helm/releases/download/papermc-1.0.8/papermc-1.0.8.tgz
     version: 1.0.8
-generated: "2021-05-18T13:16:01.65181293Z"
+generated: "2021-05-18T14:25:43.961393186Z"
