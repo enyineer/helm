@@ -54,9 +54,6 @@ probesTimeout: 60
 persistence:
   enabled: false
 
-  # Manually created PVC
-  existingPVCName: ""
-
   # Create a PVC
   storageClassName: ""
   accessMode: ReadWriteOnce
