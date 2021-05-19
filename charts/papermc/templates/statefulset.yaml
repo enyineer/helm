@@ -9,6 +9,7 @@ spec:
     matchLabels:
       {{- include "papermc.selectorLabels" . | nindent 6 }}
   replicas: 1
+  serviceName: {{ include "papermc.fullname" . }}-headless
   template:
     metadata:
       annotations:
