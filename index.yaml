@@ -50,6 +50,17 @@ entries:
     urls:
     - https://github.com/SirNiggo/helm/releases/download/benisbot-frontend-1.0.0/benisbot-frontend-1.0.0.tgz
     version: 1.0.0
+  nodejs-telegram-bot:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-04-25T13:36:20.205346024Z"
+    description: A Helm chart for nodejs telegram bots
+    digest: fa8b0b071578e20176341b801686197dfd53598cc00f768d9e20623c4b3d925a
+    name: nodejs-telegram-bot
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/nodejs-telegram-bot-0.1.0/nodejs-telegram-bot-0.1.0.tgz
+    version: 0.1.0
   papermc:
   - apiVersion: v2
     appVersion: 1.16.5
@@ -101,4 +112,4 @@ entries:
     urls:
     - https://github.com/SirNiggo/helm/releases/download/papermc-1.0.8/papermc-1.0.8.tgz
     version: 1.0.8
-generated: "2021-05-19T13:18:54.825413729Z"
+generated: "2025-04-25T13:36:20.205375408Z"
