@@ -25,7 +25,7 @@ spec:
     spec:
       {{- if (not (empty .Values.imagePullSecrets)) }}
       imagePullSecrets:
-      - name: {{ .Values.imagePullSecrets }}
+      - name: {{ .Values.imagePullSecrets | quote }}
       {{- end }}
       serviceAccountName: {{ include "nodejs-telegram-bot.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
