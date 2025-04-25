@@ -64,6 +64,16 @@ entries:
   teamspeak3:
   - apiVersion: v2
     appVersion: 3.13.7
+    created: "2025-04-25T19:13:08.286953845Z"
+    description: A Helm chart for teamspeak3 servers
+    digest: a51f43bbd5c4bf9bbceaf38cad46571e7ba21309427d60df39b7983248d0e185
+    name: teamspeak3
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/teamspeak3-0.3.0/teamspeak3-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 3.13.7
     created: "2025-04-25T16:59:02.284174751Z"
     description: A Helm chart for teamspeak3 servers
     digest: a22053c18c31a958d58d312b0494462c08f8a73b89a5795aada27f22cd715fc4
@@ -82,4 +92,4 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/teamspeak3-0.1.0/teamspeak3-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-25T16:59:02.284192223Z"
+generated: "2025-04-25T19:13:08.286974113Z"
