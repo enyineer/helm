@@ -45,6 +45,8 @@ spec:
               value: {{ .sqlCreatePath }}
             - name: TS3SERVER_DB_HOST
               value: {{ .host }}
+            - name: TS3SERVER_DB_PORT
+              value: {{ .port }}
             - name: TS3SERVER_DB_USER
               value: {{ .user }}
             - name: TS3SERVER_DB_PASSWORD

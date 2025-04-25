@@ -16,6 +16,7 @@ database: {}
 #   plugin: "ts3db_postgresql"
 #   sqlCreatePath: "create_postgresql"
 #   host: "postgres-host"
+#   port: "5432"
 #   user: "postgres"
 #   password: "securepass"
 #   name: "teamspeak"
