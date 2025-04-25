@@ -3,6 +3,16 @@ entries:
   nodejs-telegram-bot:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-04-25T16:38:03.277061752Z"
+    description: A Helm chart for nodejs telegram bots
+    digest: 6221c4b5778168bf779223c9e8f181bc1bc0146f1ea24699ff810c95125bceca
+    name: nodejs-telegram-bot
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/nodejs-telegram-bot-0.7.0/nodejs-telegram-bot-0.7.0.tgz
+    version: 0.7.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-04-25T14:31:09.563783588Z"
     description: A Helm chart for nodejs telegram bots
     digest: 6885d6c86c5f32016baaa3028ff12e4d57dabfffef1a3feeeef438167bb57c35
@@ -51,4 +61,15 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/nodejs-telegram-bot-0.2.0/nodejs-telegram-bot-0.2.0.tgz
     version: 0.2.0
-generated: "2025-04-25T14:31:09.563810808Z"
+  teamspeak3:
+  - apiVersion: v2
+    appVersion: 3.13.7
+    created: "2025-04-25T16:38:03.433605363Z"
+    description: A Helm chart for teamspeak3 servers
+    digest: c11645adc4557fae4c3a639bbca4f67f2d41ec91cc077cb77ff327950717eb08
+    name: teamspeak3
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/teamspeak3-0.1.0/teamspeak3-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-25T16:38:03.433634287Z"
