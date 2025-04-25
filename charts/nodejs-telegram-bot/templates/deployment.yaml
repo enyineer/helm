@@ -23,9 +23,9 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
-      {{- with .Values.imagePullSecrets }}
+      {{- if (not (empty .Values.imagePullSecrets)) }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
+      - name: {{ .Values.imagePullSecrets }}
       {{- end }}
       serviceAccountName: {{ include "nodejs-telegram-bot.serviceAccountName" . }}
       {{- with .Values.podSecurityContext }}
