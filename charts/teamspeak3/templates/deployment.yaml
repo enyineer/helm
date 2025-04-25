@@ -65,21 +65,21 @@ spec:
             - name: voice
               containerPort: {{ .Values.service.voice.port }}
               protocol: UDP
-            - name: fileTransfer
+            - name: file-transfer
               containerPort: {{ .Values.service.fileTransfer.port }}
               protocol: TCP
-            - name: serverQuery
+            - name: server-query
               containerPort: {{ .Values.service.serverQuery.port }}
               protocol: TCP
           {{- with .Values.livenessProbe }}
           readinessProbe:
             tcpSocket:
-              port: {{ .Values.service.serverQuery.port }}
+              port: server-query
             initialDelaySeconds: 45
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: {{ .Values.service.serverQuery.port }}
+              port: server-query
             initialDelaySeconds: 45
             periodSeconds: 10
           resources:
@@ -87,7 +87,7 @@ spec:
           {{- end }}
           {{- if .Values.dataVolume.enabled }}
           volumeMounts:
-            - name: teamspeak-data
+            - name: data
               mountPath: /var/ts3server/
           {{- end }}
       {{- with .Values.nodeSelector }}
@@ -102,3 +102,9 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        {{- if .Values.dataVolume.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "teamspeak3.fullname" . }}-data
+        {{- end }}

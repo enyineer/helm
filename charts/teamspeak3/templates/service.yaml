@@ -13,15 +13,11 @@ spec:
       name: voice
       nodePort: {{ .Values.service.voice.nodePort }}
     - port: {{ .Values.service.fileTransfer.port }}
-      targetPort: fileTransfer
+      targetPort: file-transfer
       protocol: TCP
-      name: fileTransfer
+      name: file-transfer
       nodePort: {{ .Values.service.fileTransfer.nodePort }}
-    # Important: We do not expose the serverQuery port as a nodePort for security reasons
+    # Important: We do not expose the serverQuery port as a NodePort for security reasons
     # This service is only being used for liveness/readiness probes
-    - port: {{ .Values.service.serverQuery.port }}
-      targetPort: serverQuery
-      protocol: TCP
-      name: serverQuery
   selector:
     {{- include "teamspeak3.selectorLabels" . | nindent 4 }}
