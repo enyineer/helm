@@ -3,6 +3,16 @@ entries:
   nodejs-telegram-bot:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-04-25T13:51:07.808035701Z"
+    description: A Helm chart for nodejs telegram bots
+    digest: bf650ccaa058a47ed2480ae5fd97812e94b7d7caa745a56178576fc4882a50c3
+    name: nodejs-telegram-bot
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/nodejs-telegram-bot-0.3.0/nodejs-telegram-bot-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-04-25T13:42:43.08684752Z"
     description: A Helm chart for nodejs telegram bots
     digest: 0c79cee835f8cfed8886d5c00299e251f4eaf6d3ac2094767925f4b2b940b4be
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/nodejs-telegram-bot-0.2.0/nodejs-telegram-bot-0.2.0.tgz
     version: 0.2.0
-generated: "2025-04-25T13:42:43.086870914Z"
+generated: "2025-04-25T13:51:07.808046041Z"
