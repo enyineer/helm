@@ -1,0 +1,21 @@
+{{- if .Values.dataVolume.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "teamspeak3.fullname" . }}-data
+  annotations:
+    {{- toYaml .Values.dataVolume.annotations | nindent 4 }}
+  labels:
+    {{- include "teamspeak3.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.dataVolume.size }}
+  storageClassName: {{ .Values.dataVolume.storageClass }}
+  volumeMode: {{ .Values.dataVolume.volumeMode }}
+  {{- if .Values.dataVolume.existingClaim }}
+  volumeName: {{ .Values.dataVolume.existingClaim }}
+  {{- end }}
+{{- end }}

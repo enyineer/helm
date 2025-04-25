@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "teamspeak3.fullname" . }}
+  labels:
+    {{- include "teamspeak3.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "teamspeak3.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "teamspeak3.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- if (not (empty .Values.imagePullSecrets)) }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecrets | quote }}
+      {{- end }}
+      serviceAccountName: {{ include "teamspeak3.serviceAccountName" . }}
+      {{- with .Values.podSecurityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          env:
+            {{- if .Values.license_accepted }}
+            - name: TS3SERVER_LICENSE
+              value: accept
+            {{- end }}
+            {{- if .Values.database }}
+            {{- with .Values.database }}
+            - name: TS3SERVER_DB_PLUGIN
+              value: {{ .plugin }}
+            - name: TS3SERVER_DB_SQLCREATEPATH
+              value: {{ .sqlCreatePath }}
+            - name: TS3SERVER_DB_HOST
+              value: {{ .host }}
+            - name: TS3SERVER_DB_USER
+              value: {{ .user }}
+            - name: TS3SERVER_DB_PASSWORD
+              value: {{ .password }}
+            - name: TS3SERVER_DB_NAME
+              value: {{ .name }}
+            - name: TS3SERVER_DB_WAITUNTILREADY
+              value: "30"
+            {{- end }}
+            {{- end }}
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          image: "{{ .Values.image.image }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: voice
+              containerPort: {{ .Values.service.voice.port }}
+              protocol: UDP
+            - name: fileTransfer
+              containerPort: {{ .Values.service.fileTransfer.port }}
+              protocol: TCP
+            - name: serverQuery
+              containerPort: {{ .Values.service.serverQuery.port }}
+              protocol: TCP
+          {{- with .Values.livenessProbe }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.service.serverQuery.port }}
+            initialDelaySeconds: 45
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.service.serverQuery.port }}
+            initialDelaySeconds: 45
+            periodSeconds: 10
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if .Values.dataVolume.enabled }}
+          volumeMounts:
+            - name: teamspeak-data
+              mountPath: /var/ts3server/
+          {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "teamspeak3.fullname" . }}
+  labels:
+    {{- include "teamspeak3.labels" . | nindent 4 }}
+spec:
+  type: NodePort
+  ports:
+    - port: {{ .Values.service.voice.port }}
+      targetPort: voice
+      protocol: UDP
+      name: voice
+      nodePort: {{ .Values.service.voice.nodePort }}
+    - port: {{ .Values.service.fileTransfer.port }}
+      targetPort: fileTransfer
+      protocol: TCP
+      name: fileTransfer
+      nodePort: {{ .Values.service.fileTransfer.nodePort }}
+    # Important: We do not expose the serverQuery port as a nodePort for security reasons
+    # This service is only being used for liveness/readiness probes
+    - port: {{ .Values.service.serverQuery.port }}
+      targetPort: serverQuery
+      protocol: TCP
+      name: serverQuery
+  selector:
+    {{- include "teamspeak3.selectorLabels" . | nindent 4 }}
