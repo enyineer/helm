@@ -1,6 +1,0 @@
-apiVersion: v2
-appVersion: 1.15.2
-description: Deploy the PaperMC Minecraft server
-name: papermc
-type: application
-version: 0.1.11
