@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  7dtd:
+  - apiVersion: v2
+    appVersion: v0.7.10
+    created: "2025-04-30T18:38:35.345096371Z"
+    description: 7 Days to Die dedicated server
+    digest: a44da667d0eae35ad8f9d4c28275286c3f0177420a3e643af39a6fe55a11c700
+    name: 7dtd
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/7dtd-0.1.0/7dtd-0.1.0.tgz
+    version: 0.1.0
   nodejs-telegram-bot:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -102,4 +113,4 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/teamspeak3-0.1.0/teamspeak3-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-25T19:26:41.700527052Z"
+generated: "2025-04-30T18:38:35.345122951Z"
