@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "7dtd.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "7dtd.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "7dtd.name" . }}
+    spec:
+      containers:
+        - name: 7dtd
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: gameporta
+              containerPort: 26900
+              protocol: UDP
+            - name: gameportb
+              containerPort: 26900
+              protocol: TCP
+            - name: gameportc
+              containerPort: 26901
+              procotol: UDP
+            - name: gameportd
+              containerPort: 26902
+              protocol: UDP
+            - name: serverfixes
+              containerPort: 8082
+              protocol: TCP
+            - name: telnet
+              containerPort: 8081
+              protocol: TCP
+            - name: webadmin
+              containerPort: 8080
+              protocol: TCP
+          env:
+            {{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: "{{ $val }}"
+            {{- end }}
+          volumeMounts:
+            - name: data
+              mountPath: /home/sdtdserver/.local/share/7DaysToDie/
+            - name: lgsm-config
+              mountPath: /home/sdtdserver/lgsm/config-lgsm/sdtdserver
+            {{- if .Values.persistence.serverFiles.enabled }}
+            - name: server-files
+              mountPath: /home/sdtdserver/serverfiles/
+            {{- end }}
+            {{- if .Values.persistence.log.enabled }}
+            - name: log
+              mountPath: /home/sdtdserver/log/
+            {{- end }}
+            {{- if .Values.persistence.backups.enabled }}
+            - name: backups
+              mountPath: /home/sdtdserver/lgsm/backup/
+            {{- end }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "7dtd.fullname" . }}-data
+        - name: lgsm-config
+          persistentVolumeClaim:
+            claimName: {{ include "7dtd.fullname" . }}-lgsm-config
+        {{- if .Values.persistence.serverFiles.enabled }}
+        - name: server-files
+          persistentVolumeClaim:
+            claimName: {{ include "7dtd.fullname" . }}-server-files
+        {{- end }}
+        {{- if .Values.persistence.log.enabled }}
+        - name: log
+          persistentVolumeClaim:
+            claimName: {{ include "7dtd.fullname" . }}-log
+        {{- end }}
+        {{- if .Values.persistence.backups.enabled }}
+        - name: backups
+          persistentVolumeClaim:
+            claimName: {{ include "7dtd.fullname" . }}-backups
+        {{- end }}
