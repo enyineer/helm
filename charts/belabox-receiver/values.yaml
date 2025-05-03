@@ -1,0 +1,116 @@
+image: your-image-repo/image:tag
+
+imagePullSecrets: ""
+
+# Multiline JSON to be written to /app/config.json
+config: |
+  {
+    "user": { 
+      "id": null,
+      "name": "<twitchName>",
+      "passwordHash": null
+    },
+    "switcher": {
+      "bitrateSwitcherEnabled": true,
+      "onlySwitchWhenStreaming": false,
+      "instantlySwitchOnRecover": true,
+      "autoSwitchNotification": false,
+      "retryAttempts": 5,
+      "triggers": {
+        "low": 1000,
+        "rtt": 1500,
+        "offline": 500
+      },
+      "switchingScenes": {
+        "normal": "NORMAL",
+        "low": "LOW",
+        "offline": "OFFLINE"
+      },
+      "streamServers": [
+        {
+          "streamServer": {
+            "type": "SrtLiveServer",
+            "statsUrl": "http://127.0.0.1:8181/stats",
+            "publisher": "live/stream/<random-string>"
+          },
+          "name": "SRT Server",
+          "priority": 0,
+          "overrideScenes": null,
+          "dependsOn": null,
+          "enabled": true
+        }
+      ]
+    },
+    "software": {
+      "type": "Obs",
+      "host": "<your-dyndns-address>",
+      "password": "<your-websocket-password>",
+      "port": 4455,
+      "collections": {
+        "twitch": {
+          "profile": "twitch_profile",
+          "collection": "twitch_scenes"
+        }
+      }
+    },
+    "chat": {
+      "platform": "Twitch",
+      "username": "<twich-name>",
+      "admins": [
+        "<twitch-name>"
+      ],
+      "language": "DE",
+      "prefix": "!",
+      "enablePublicCommands": false,
+      "enableModCommands": true,
+      "enableAutoStopStreamOnHostOrRaid": true,
+      "commands": {
+        "Fix": {
+          "permission": null,
+          "userPermissions": [],
+          "alias": [
+            "f"
+          ]
+        },
+        "Switch": {
+          "permission": "Mod",
+          "alias": [
+            "ss"
+          ]
+        },
+        "Bitrate": {
+          "permission": null,
+          "alias": [
+            "b"
+          ]
+        }
+      }
+    },
+    "optionalScenes": {
+      "starting": "STARTING",
+      "ending": "ENDING",
+      "privacy": "PRIVACY",
+      "refresh": null
+    },
+    "optionalOptions": {
+      "twitchTranscodingCheck": false,
+      "twitchTranscodingRetries": 5,
+      "twitchTranscodingDelaySeconds": 15,
+      "offlineTimeout": null,
+      "recordWhileStreaming": false,
+      "switchToStartingSceneOnStreamStart": true,
+      "switchFromStartingSceneToLiveScene": false
+    }
+  }
+
+# Credentials for .env file
+twitchBot:
+  username: "<twitch-name>"
+  oauth: "<twitch-oauth-token>"
+
+# NodePort assignments (optional—Helm will defaults if you omit)
+service:
+  nodePorts:
+    srtla: 30090
+    # stats: 30091     # ← comment out or remove to disable
+    srt: 30092

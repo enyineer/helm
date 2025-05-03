@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "belabox-receiver.fullname" . }}-config
+data:
+  config.json: |
+{{ .Values.config | indent 4 }}
+  .env: |
+    TWITCH_BOT_USERNAME={{ .Values.twitchBot.username }}
+    TWITCH_BOT_OAUTH={{ .Values.twitchBot.oauth }}

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "belabox-receiver.fullname" . }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "belabox-receiver.name" . }}
+  serviceName: {{ include "belabox-receiver.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "belabox-receiver.name" . }}
+    spec:
+      {{- if (not (empty .Values.imagePullSecrets)) }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecrets | quote }}
+      {{- end }}
+      containers:
+      - name: {{ include "belabox-receiver.name" . }}
+        image: {{ .Values.image }}
+        ports:
+        - name: srtla
+          containerPort: 5000
+          protocol: UDP
+        - name: stats
+          containerPort: 8181
+          protocol: TCP
+        - name: srt
+          containerPort: 8282
+          protocol: UDP
+        livenessProbe:
+          httpGet:
+            path: /stats
+            port: 8181
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config.json
+          subPath: config.json
+        - name: env-volume
+          mountPath: /app/.env
+          subPath: .env
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ include "belabox-receiver.fullname" . }}-config
+          items:
+          - key: config.json
+            path: config.json
+      - name: env-volume
+        configMap:
+          name: {{ include "belabox-receiver.fullname" . }}-config
+          items:
+          - key: .env
+            path: .env
