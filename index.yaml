@@ -14,6 +14,16 @@ entries:
   belabox-receiver:
   - apiVersion: v2
     appVersion: 2.11.2
+    created: "2025-05-03T20:51:43.340030863Z"
+    description: A Helm chart for the belabox receiver with NOALBS
+    digest: 210507e6381606ca080027ee1248480f060b6378c16894a41e0f3d2cd8c035c3
+    name: belabox-receiver
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/belabox-receiver-0.2.0/belabox-receiver-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 2.11.2
     created: "2025-05-03T20:49:45.766251237Z"
     description: A Helm chart for the belabox receiver with NOALBS
     digest: 34c14bacde5464661ab6d8a280f55e89ad256fb666296b0a4ac449196b9b8519
@@ -124,4 +134,4 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/teamspeak3-0.1.0/teamspeak3-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-03T20:49:45.766272176Z"
+generated: "2025-05-03T20:51:43.340053635Z"
