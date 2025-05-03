@@ -34,6 +34,8 @@ spec:
           httpGet:
             path: /stats
             port: 8181
+          initialDelaySeconds: 3
+          periodSeconds: 3
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.json
