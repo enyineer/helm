@@ -32,6 +32,23 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/belabox-receiver-0.1.0/belabox-receiver-0.1.0.tgz
     version: 0.1.0
+  nodejs:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-02-05T22:22:03.325259145Z"
+    description: A generic Helm chart for Node.js/Bun applications with optional persistence
+    digest: 47bfb034bb10bc15206db864d0c347ed4c5790ab16579ed65561ba6cb9b11409
+    keywords:
+    - nodejs
+    - web
+    - api
+    maintainers:
+    - name: Nico Enking
+    name: nodejs
+    type: application
+    urls:
+    - https://github.com/enyineer/helm/releases/download/nodejs-0.1.0/nodejs-0.1.0.tgz
+    version: 0.1.0
   nodejs-telegram-bot:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -134,4 +151,4 @@ entries:
     urls:
     - https://github.com/enyineer/helm/releases/download/teamspeak3-0.1.0/teamspeak3-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-03T20:51:43.340053635Z"
+generated: "2026-02-05T22:22:03.325281798Z"
