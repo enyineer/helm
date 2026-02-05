@@ -1,0 +1,12 @@
+apiVersion: v2
+name: nodejs
+description: A generic Helm chart for Node.js/Bun applications with optional persistence
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - nodejs
+  - web
+  - api
+maintainers:
+  - name: Nico Enking

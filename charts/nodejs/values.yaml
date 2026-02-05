@@ -1,0 +1,98 @@
+# Default values for nodejs chart
+
+replicaCount: 1
+
+image:
+  repository: "" # Required: e.g., harbor.com/my-project/my-app
+  tag: latest
+  pullPolicy: Always
+
+imagePullSecrets: []
+#  - name: harbor-pull-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Application port
+containerPort: 3000
+
+# Environment variables (non-sensitive)
+env: {}
+#  NODE_ENV: production
+#  DATABASE_PATH: /data/app.db
+
+# Secrets - will be created as a Kubernetes secret
+# Values are automatically base64 encoded
+secrets: {}
+#  API_KEY: "my-secret-key"
+#  DATABASE_URL: "postgres://..."
+
+# Use existing secret instead of creating one
+existingSecret: ""
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  #  traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  #  traefik.ingress.kubernetes.io/router.tls: "true"
+  host: ""
+  tls:
+    enabled: false
+    secretName: "" # Leave empty for auto-generated name
+
+persistence:
+  enabled: false
+  mountPath: /data
+  size: 1Gi
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  existingClaim: ""
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+  limits:
+    memory: 256Mi
+    cpu: 500m
+
+# Pod security context
+podSecurityContext:
+  fsGroup: 1000
+
+# Container security context
+securityContext:
+  runAsUser: 1000
+  runAsNonRoot: true
+
+# Health checks - customize paths for your app
+livenessProbe:
+  enabled: true
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 15
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  enabled: true
+  httpGet:
+    path: /
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
